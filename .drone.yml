@@ -7,7 +7,7 @@ platform:
   arch: amd64
 
 steps:
-- name: build
+- name: remove
   pull: always
   image: golang:1.15-rc
   commands:
