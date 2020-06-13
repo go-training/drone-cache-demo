@@ -21,7 +21,7 @@ steps:
     bucket: drone-cache-demo
     region: ap-northeast-1
     mount:
-      - 'cache'
+      - 'drone-cache'
 
 - name: build
   pull: always
@@ -30,7 +30,7 @@ steps:
   - go build -v -a -o demo
   environment:
     CGO_ENABLED: 0
-    GOMODCACHE: cache
+    GOMODCACHE: 'drone-cache'
   when:
     event:
       exclude:
@@ -50,7 +50,7 @@ steps:
     bucket: drone-cache-demo
     region: ap-northeast-1
     mount:
-      - 'cache'
+      - 'drone-cache'
 
 # - name: default-publish
 #   pull: always
