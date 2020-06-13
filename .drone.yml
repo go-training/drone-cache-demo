@@ -34,9 +34,7 @@ steps:
   pull: always
   image: golang:1.15-rc
   commands:
-  - pwd
   - make build
-  - ls -al pkg.mod
   environment:
     CGO_ENABLED: 0
     GOMODCACHE: '/drone/src/pkg.mod'
