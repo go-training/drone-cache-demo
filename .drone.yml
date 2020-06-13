@@ -24,7 +24,7 @@ steps:
     local_root: /
     archive_format: gzip
     mount:
-      - '/go/pkg/mod'
+      - cache
   volumes:
   - name: cache
     path: /go
@@ -34,8 +34,10 @@ steps:
   image: golang:1.15-rc
   commands:
   - make build
+  - ls -al cache
   environment:
     CGO_ENABLED: 0
+    GOMODCACHE: '/drone/src/{{ .Repo.Name }}/cache'
   when:
     event:
       exclude:
@@ -59,7 +61,7 @@ steps:
     region: ap-northeast-1
     archive_format: gzip
     mount:
-      - '/go/pkg/mod'
+      - cache
   volumes:
   - name: cache
     path: /go
