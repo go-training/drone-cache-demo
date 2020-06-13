@@ -1,5 +1,7 @@
 # drone-cache-demo
 
+[![Build Status](https://cloud.drone.io/api/badges/go-training/drone-cache-demo/status.svg)](https://cloud.drone.io/go-training/drone-cache-demo)
+
 How to cache the third party file in [Golang](https://golang.org)? [Go 1.15](https://tip.golang.org/doc/go1.15) version the `GOMODCACHE` environment variable. The default value of `GOMODCACHE` is `GOPATH[0]/pkg/mod`, the location of the module cache before this change. How to cache the `GOMODCACHE` path using [Drone](https://cloud.drone.io/) with [meltwater/drone-cache](https://github.com/meltwater/drone-cache) plugin.
 
 ## Change default value of GOMODCACHE
