@@ -21,13 +21,15 @@ steps:
     bucket: drone-cache-demo
     region: ap-northeast-1
     mount:
-      - 'vendor'
+      - '/go/pkg/mod'
+  volumes:
+  - name: cache
+    path: /go
 
 - name: build
   pull: always
   image: golang:1.15-rc
   commands:
-  - make vendor
   - make build
   environment:
     CGO_ENABLED: 0
@@ -36,6 +38,9 @@ steps:
     event:
       exclude:
       - tag
+  volumes:
+  - name: cache
+    path: /go
 
 - name: rebuild-cache
   image: meltwater/drone-cache
@@ -51,7 +56,14 @@ steps:
     bucket: drone-cache-demo
     region: ap-northeast-1
     mount:
-      - 'vendor'
+      - '/go/pkg/mod'
+  volumes:
+  - name: cache
+    path: /go
+
+volumes:
+- name: cache
+  temp: {}
 
 # - name: default-publish
 #   pull: always

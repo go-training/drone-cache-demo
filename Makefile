@@ -1,6 +1,6 @@
 SERVICE               ?= demo
-GOBUILD               := go build -mod=vendor
-GOINSTALL             := go install -mod=vendor
+GOBUILD               := go build
+GOINSTALL             := go install
 GOMOD                 := go mod
 VCS_REF               := $(strip $(shell [ -d .git ] && git rev-parse HEAD))
 VERSION               := $(strip $(shell [ -d .git ] && git describe --abbrev=0))
@@ -14,12 +14,7 @@ all: build
 build: $(SERVICE)
 
 $(SERVICE): $(GOFILES)
-	$(GOBUILD) -v -ldflags $(LDFLAGS) -tags $(TAGS) -o demo .
-
-.PHONY: vendor
-vendor:
-	$(GOMOD) tidy
-	$(GOMOD) vendor -v
+	$(GOBUILD) -v -ldflags $(LDFLAGS) -tags $(TAGS) -o $(SERVICE) .
 
 docker:
 	docker build --progress=plain -t appleboy/docker-demo -f Dockerfile .
