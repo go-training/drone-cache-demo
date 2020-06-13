@@ -27,7 +27,7 @@ steps:
   pull: always
   image: golang:1.15-rc
   commands:
-  - go build -v -a -o docker-demo
+  - go build -v -a -o demo
   environment:
     CGO_ENABLED: 0
     GOMODCACHE: cache
