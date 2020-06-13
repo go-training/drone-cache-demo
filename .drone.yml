@@ -28,6 +28,7 @@ steps:
   image: golang:1.15-rc
   commands:
   - go build -v -a -o demo
+  - ls -al drone-cache
   environment:
     CGO_ENABLED: 0
     GOMODCACHE: 'drone-cache'
