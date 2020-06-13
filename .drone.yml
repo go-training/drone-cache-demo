@@ -22,6 +22,7 @@ steps:
     bucket: drone-cache-demo
     region: ap-northeast-1
     local_root: /
+    remote_root: /
     mount:
       - '/go/pkg/mod'
   volumes:
