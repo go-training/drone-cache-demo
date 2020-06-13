@@ -33,7 +33,6 @@ steps:
   - make build
   environment:
     CGO_ENABLED: 0
-    GOMODCACHE: 'drone-cache'
   when:
     event:
       exclude:
