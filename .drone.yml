@@ -17,7 +17,7 @@ steps:
   pull: always
   settings:
     restore: true
-    cache_key: 1234
+    cache_key: '{{ .Repo.Name }}_{{ checksum "go.mod" }}_{{ checksum "go.sum" }}_{{ arch }}_{{ os }}'
     bucket: drone-cache-demo
     region: ap-northeast-1
     mount:
@@ -46,7 +46,7 @@ steps:
       from_secret: aws_secret_access_key
   settings:
     rebuild: true
-    cache_key: 1234
+    cache_key: '{{ .Repo.Name }}_{{ checksum "go.mod" }}_{{ checksum "go.sum" }}_{{ arch }}_{{ os }}'
     bucket: drone-cache-demo
     region: ap-northeast-1
     mount:
