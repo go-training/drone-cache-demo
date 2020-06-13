@@ -7,6 +7,22 @@ platform:
   arch: amd64
 
 steps:
+- name: build
+  pull: always
+  image: golang:1.15-rc
+  commands:
+  - rm -rf /go/pkg/mod
+  environment:
+    CGO_ENABLED: 0
+  when:
+    event:
+      exclude:
+      - tag
+  volumes:
+  - name: cache
+    path: /go
+
+
 - name: restore-cache
   image: meltwater/drone-cache
   environment:
