@@ -24,7 +24,7 @@ steps:
     local_root: /
     archive_format: gzip
     mount:
-      - cache
+      - pkg.mod
   volumes:
   - name: cache
     path: /go
@@ -35,10 +35,10 @@ steps:
   commands:
   - pwd
   - make build
-  - ls -al cache
+  - ls -al pkg.mod
   environment:
     CGO_ENABLED: 0
-    GOMODCACHE: '/drone/src/{{ .Repo.Name }}/cache'
+    GOMODCACHE: '/drone/src/pkg.mod'
   when:
     event:
       exclude:
@@ -62,7 +62,7 @@ steps:
     region: ap-northeast-1
     archive_format: gzip
     mount:
-      - cache
+      - pkg.mod
   volumes:
   - name: cache
     path: /go
