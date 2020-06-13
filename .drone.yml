@@ -33,6 +33,7 @@ steps:
   pull: always
   image: golang:1.15-rc
   commands:
+  - pwd
   - make build
   - ls -al cache
   environment:
