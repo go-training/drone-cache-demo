@@ -25,6 +25,7 @@ steps:
     archive_format: gzip
     mount:
       - pkg.mod
+      - pkg.build
   volumes:
   - name: cache
     path: /go
@@ -39,6 +40,7 @@ steps:
   environment:
     CGO_ENABLED: 0
     GOMODCACHE: '/drone/src/pkg.mod'
+    GOCACHE: '/drone/src/pkg.build'
   when:
     event:
       exclude:
@@ -63,6 +65,7 @@ steps:
     archive_format: gzip
     mount:
       - pkg.mod
+      - pkg.build
   volumes:
   - name: cache
     path: /go
